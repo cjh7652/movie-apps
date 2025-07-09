@@ -1,22 +1,32 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
+import { CiSearch } from "react-icons/ci";
 
 const Home = () => {
    /*  546c72b99cf64514c2c03c7ef473011b */
    const [upComingMovies, setUpComingMovies] = useState([]);
+   const [appMovies, setAppMovies]=useState([]);
    const [isLoading, setIsLoading] = useState(true);
+   const [visibleMovies, setVisibleMovies] = useState(5)
 
    const getMovies = async () => {
         try{
             const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+
+            const appResponse = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+
             setUpComingMovies(response.data.results);
-            //console.log(response.data.results);
+            setAppMovies(appResponse.data.results);
+
+           // console.log(response.data.results);
+           console.log(appResponse.data.results);
             setIsLoading(false);
         }catch(error){
             console.error(error);
             setIsLoading(false);
         }
    }
+
    useEffect(()=>{
          getMovies();
    }, []);
@@ -32,14 +42,58 @@ const Home = () => {
             <div className="upComing">
                    {
                     isLoading ? (
-                        <p>Loading...</p>
+                        <p className='loding'>Loading...</p>
                     ) : (
-                        <p>{randomMovie ? randomMovie.title : "No upcoming movies"}</p>
+                       <div className="upMovie">
+                            <div className="upComingImg">
+                                {randomMovie && <img src={`https://image.tmdb.org/t/p/w500${randomMovie.backdrop_path}`} alt={randomMovie.title} />}
+                            </div>
+                            <div className="upComingInfo">
+                                <div className="upInfoText">
+                                    <p className="title">{randomMovie.title}</p>
+                                    <p className="original_title">{randomMovie.original_title}</p>
+                                    <p className="overview">개요 : {randomMovie.overview}</p>
+                                    <p className="release_date">개봉일 : {randomMovie.release_date}</p>
+                                    <p className="release_date">평점 : {randomMovie.vote_average}</p>
+                                    <p className="vote_count">좋아요 : {randomMovie.vote_count}</p>
+                                </div>
+                            </div>
+                       </div>
                     )
                     }
             </div>     
-            <div className="search"></div>
+            <div className="search">
+                <input type="search" placeholder='영화제목을 입력해주세요' />
+                <CiSearch className='searchIcon'/>
+            </div>
 
+            <div className="mainUpComing">
+                <h2>상영작</h2>
+                <div className="movieList">
+                    {isLoading ? (<p className='loading'>로딩중...</p>):(
+                        appMovies.slice(0,visibleMovies).map((movie) => (
+                        <div className="movieItem" key={movie.id}>
+                           <div className='imgWrap'> <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /></div>
+                            <div className='textWrap'>
+                                <h3>{movie.title}</h3>
+                                <p>개봉일: {movie.release_date}</p>
+                                <p className='average'> {movie.vote_average}</p>
+                            </div>
+                        </div>
+                    ))
+                    )}
+
+                </div>
+                {
+                  appMovies.length > visibleMovies && (
+                    <div className='more'>
+                        <button className='loadMore' onClick={() => setVisibleMovies(visibleMovies + 5)}>
+                            더보기
+                        </button>
+                    </div>
+                )
+            }
+            </div>
         </div>
     );
 };
