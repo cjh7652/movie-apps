@@ -1,4 +1,15 @@
 @use './Reset' as *;
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: $color-khaki;
+}
+.loading{
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    margin: 50px 0;}
 .header{
     width: 100%;
     height: 100px;
@@ -13,6 +24,10 @@
     z-index: 10;
     .logo{color: $color-khaki; 
         font-size: 50px;
+        a{
+            color: $color-khaki;
+            text-decoration: none;
+        }
     }
     nav{
         ul{
@@ -20,6 +35,7 @@
             li{margin-left: 20px;
                 a{
                     text-transform: uppercase;
+                    color: #fff;
                 }
             }
         }
@@ -87,14 +103,21 @@
     }
 
 }
-.search{
+.searchBox{
     display: flex;
     padding: 50px;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
     input{
         padding: 5px 10px;
         flex-grow: 1;
+    }
+    .searchBtn{
+        background: none;
+        border: none;
+
     }
     .searchIcon{
         font-size: 20px;
@@ -103,12 +126,7 @@
 }
 .mainUpComing{
     padding: 20px 50px;
-    h2{
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: $color-khaki;
-    }
+    
     .movieList{
         display:flex;
         flex-wrap: wrap;
@@ -203,6 +221,66 @@
             padding: 10px 20px;
             border: none;
             border-radius: 20px;
+        }
+    }
+}
+.moviesDetail{
+    margin-top: 100px;
+    padding: 50px;
+    .movie{
+         background: #fff;
+         padding: 30px;
+         box-shadow: 5px 5px 20px rgba(0,0,0,.3);
+        .movieBox{
+            text-align: center;
+            img{
+                width: 80%;
+            }
+        }
+        .textBox{
+           
+
+            margin: 30px auto;
+            padding:20px 80px;
+           
+            .textBoxtTitle{
+                font-size: 24px;
+                font-weight: bold;
+                color: $color-khaki;
+            }
+            .textBoxtOriginal_title{
+                font-size: small;
+            }
+            .textBoxtOverview{
+               padding-top: 20px; 
+               padding-bottom: 30px;
+            }
+            .textBoxtRelease_date{}
+            .textBoxtVote_average{}
+            .textBoxtVote_count{}
+            .textBoxtPopularity{}
+            .textBoxtStatus{}
+            .textBoxtTagline{}
+            .textBoxtGenres{
+                .textBoxtGenre{ color: #f00; margin-right: 10px;
+                font-size: small;
+                font-weight: bold;   
+            }
+            }
+        }
+    }
+}
+.recommendations{
+    padding: 50px;
+    .swiper-navigation{
+        text-align: center;
+        img{
+            width: 80%
+        }
+        h3{
+            font-size: small;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     }
 }

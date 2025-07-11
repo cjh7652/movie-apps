@@ -3,6 +3,7 @@ import './App.scss';
 import Home from './routes/Home';
 import About from './routes/About';
 import Detail from './routes/Detail';
+import MoviesDetail from './routes/MoviesDetail';
 import Header from './components/Header';
 
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/movies/:id" element={<MoviesDetail />} />
       </Routes>
     </div>
   );
