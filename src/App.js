@@ -5,6 +5,9 @@ import About from './routes/About';
 import Detail from './routes/Detail';
 import MoviesDetail from './routes/MoviesDetail';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import QuickBtn from './components/QuickBtn';
+
 
 
 function App() {
@@ -17,6 +20,8 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/movies/:id" element={<MoviesDetail />} />
       </Routes>
+      <Footer />
+      <QuickBtn />
     </div>
   );
 }

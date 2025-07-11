@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { GrFormNext } from "react-icons/gr";
+import { GrFormPrevious } from "react-icons/gr";
 import axios from 'axios';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
+
 
 
 
 // import required modules
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, FreeMode  } from 'swiper/modules';
 
 const Recommendations = () => {
     const [recommend, setRecommend] = useState([]);
@@ -38,20 +42,41 @@ const Recommendations = () => {
                 {isLoading ? (<div className='loading'>Loading...</div>):(
                    <div className="swiper-navigation">
                         <Swiper
-                            slidesPerView={5}
-                            spaceBetween={30}
-                            pagination={{
-                            clickable: true,
-                            }}
+                            slidesPerView={2}
+                            spaceBetween={5}
+                           
                             autoplay={{
-                                delay:1500,
-                                disableOnInteraction: false,
+                            delay: 0,
+                            disableOnInteraction: false,
                             }}
+                            speed={10000}
                             loop={true}
 
+                             navigation={{
+                                nextEl:'.swiperNext',
+                                prevEl:'.swiperPrev'
+                             }}
+                              breakpoints={{
+                                // when window width is >= 320px
+                               480: {
+                                slidesPerView: 3,
+                                spaceBetween: 20
+                                },
+                                // when window width is >= 480px
+                               780: {
+                                slidesPerView: 4,
+                                spaceBetween: 10
+                                },
+                                // when window width is >= 640px
+                               1240: {
+                                slidesPerView: 5,
+                                spaceBetween: 5
+                                }
+                            }} 
+                             freeMode={true}
+      grabCursor={true}
 
-
-                            modules={[Pagination, Autoplay]}
+                            modules={[Navigation, Autoplay, FreeMode]}
                             className="mySwiper"
                         >
                             {recommend.map((movie) => (
@@ -61,6 +86,10 @@ const Recommendations = () => {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+                        <div className="navigationWrap">
+                            <div className="swiperNext"><GrFormNext className='icon'/></div>
+                            <div className="swiperPrev"><GrFormPrevious className='icon' /></div>
+                        </div>
                    </div>
                 )}
             </div>
