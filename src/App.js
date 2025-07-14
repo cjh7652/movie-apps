@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 import './App.scss';
 import Home from './routes/Home';
-import About from './routes/About';
+import Sports from './routes/Sports';
 import Drama from './routes/Detail';
 import MoviesDetail from './routes/MoviesDetail';
 import Header from './components/Header';
@@ -16,7 +16,7 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/sports" element={<Sports />} />
         <Route path="/drama" element={<Drama />} ></Route>
          <Route path="/drama/:id" element={<DramaDetail/>}></Route>
         <Route path="/movies/:id" element={<MoviesDetail />} />

@@ -17,7 +17,7 @@ const DramaDetail = () => {
         }).catch(err => {console.error(err)})
     }, [id])
     return (
-        <div>
+        <div className='dramaDetail'>
             {
                 isLoading ? (<div>로딩중...</div>) : (<div>
 
@@ -25,7 +25,13 @@ const DramaDetail = () => {
                         <img src={`https://image.tmdb.org/t/p/w500${appDrama.backdrop_path}`} alt="" />
                     </div>
                     <div className="textbox">
-
+                        <div className="name">드라마제목 : {appDrama.name}</div>
+                        <div className="homepage">홈페이지 주소 : {appDrama.homepage}</div>
+                        <div className="created_by">출연진 :{
+                            appDrama.created_by && appDrama.created_by.map((activer) => (
+                                    <span key={activer.id} className="textBoxtActiver"> {activer.name}</span>
+                                ))
+                            }</div>
                     </div>
                 </div>)
             }

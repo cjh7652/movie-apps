@@ -376,3 +376,36 @@ h2{
         }
     }
 }
+
+.dramaDetail{
+    max-width: 1250px;
+    margin:150px auto;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 5px 5px 10px #ccc;
+    .imgbox{
+        text-align: center;
+        img{
+            width: 80%;
+            
+        }
+    }
+    .textbox{
+        width: 80%;
+        margin: 0 auto;
+        .name{
+            margin-top: 20px;
+        }
+        .homepage{
+            text-decoration: underline;
+             margin-top: 20px;
+        }
+        .created_by{
+             margin-top: 20px;
+            span{margin-right: 20px;
+                font-size: small;
+                color:$color-khaki-dark
+            }
+        }
+    }
+}

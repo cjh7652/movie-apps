@@ -11,8 +11,10 @@ const Header = () => {
                     <li>
                         <NavLink to="/" style={({isActive})=>(isActive? activeStyle : undefined)}>Home</NavLink>
                     </li>
-                    <li> <NavLink to="/about" style={({isActive})=>(isActive? activeStyle : undefined)}>About</NavLink></li>
+                   
                     <li> <NavLink to="/drama" style={({isActive})=>(isActive? activeStyle : undefined)}>Drama</NavLink></li>  
+
+                     <li> <NavLink to="/sports" style={({isActive})=>(isActive? activeStyle : undefined)}>sports</NavLink></li>
                 </ul>
             </nav>
         </header>
