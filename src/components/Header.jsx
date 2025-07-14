@@ -12,7 +12,7 @@ const Header = () => {
                         <NavLink to="/" style={({isActive})=>(isActive? activeStyle : undefined)}>Home</NavLink>
                     </li>
                     <li> <NavLink to="/about" style={({isActive})=>(isActive? activeStyle : undefined)}>About</NavLink></li>
-                    <li> <NavLink to="/detail" style={({isActive})=>(isActive? activeStyle : undefined)}>Detail</NavLink></li>  
+                    <li> <NavLink to="/drama" style={({isActive})=>(isActive? activeStyle : undefined)}>Drama</NavLink></li>  
                 </ul>
             </nav>
         </header>

@@ -1,0 +1,36 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
+
+
+const DramaDetail = () => {
+    const {id} = useParams(); 
+    const [appDrama, setAppDrama]=useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko-KR&page=1`)
+        .then(res => {
+            console.log(res.data)
+            setAppDrama(res.data)
+            setIsLoading(false)
+        }).catch(err => {console.error(err)})
+    }, [id])
+    return (
+        <div>
+            {
+                isLoading ? (<div>로딩중...</div>) : (<div>
+
+                    <div className="imgbox">
+                        <img src={`https://image.tmdb.org/t/p/w500${appDrama.backdrop_path}`} alt="" />
+                    </div>
+                    <div className="textbox">
+
+                    </div>
+                </div>)
+            }
+        </div>
+    );
+};
+
+export default DramaDetail;
