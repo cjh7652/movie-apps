@@ -3,12 +3,13 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
 const MoviesDetail = () => {
+    const API_KEY=process.env.REACT_APP_API_KEY;
     const {id} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [m, setM] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko`).then(res => {
             console.log(res.data);
             setM(res.data);
             setIsLoading(false);

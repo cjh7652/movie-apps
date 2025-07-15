@@ -14,7 +14,7 @@ const Header = () => {
                    
                     <li> <NavLink to="/drama" style={({isActive})=>(isActive? activeStyle : undefined)}>Drama</NavLink></li>  
 
-                     <li> <NavLink to="/sports" style={({isActive})=>(isActive? activeStyle : undefined)}>sports</NavLink></li>
+                     <li> <NavLink to="/sports" style={({isActive})=>(isActive? activeStyle : undefined)}>comedy</NavLink></li>
                 </ul>
             </nav>
         </header>

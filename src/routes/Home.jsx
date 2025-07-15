@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Recommendations from '../components/Recommendations';
 
 const Home = () => {
-   /*  546c72b99cf64514c2c03c7ef473011b */
+   const API_KEY=process.env.REACT_APP_API_KEY;
    const [upComingMovies, setUpComingMovies] = useState([]);
    const [appMovies, setAppMovies]=useState([]);
    const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const Home = () => {
    const [randomMovie, setRandomMovie]=useState(null)
 
    const search = () =>{
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko&query=${searchWord}`)
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ko&query=${searchWord}`)
     .then((res)=>{
         console.log(res.data.results);
         setAppMovies(res.data.results);
@@ -31,9 +31,9 @@ const Home = () => {
    }
    const getMovies = async () => {
         try{
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=ko`);
 
-            const appResponse = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko`);
+            const appResponse = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko`);
 
             setUpComingMovies(response.data.results);
             setAppMovies(appResponse.data.results);

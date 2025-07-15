@@ -4,12 +4,13 @@ import {useParams} from "react-router-dom";
 
 
 const DramaDetail = () => {
+    const API_KEY=process.env.REACT_APP_API_KEY;
     const {id} = useParams(); 
     const [appDrama, setAppDrama]=useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=546c72b99cf64514c2c03c7ef473011b&language=ko-KR&page=1`)
+        axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=ko-KR&page=1`)
         .then(res => {
             console.log(res.data)
             setAppDrama(res.data)

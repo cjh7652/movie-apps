@@ -311,8 +311,12 @@ h2{
     }
 }
 .detail{
-    padding-top: 150px;
-    margin: 0 100px;
+
+    max-width: 1250px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 150px auto;
+
     .drama{
         display: flex;
         flex-wrap: wrap;
@@ -405,6 +409,68 @@ h2{
             span{margin-right: 20px;
                 font-size: small;
                 color:$color-khaki-dark
+            }
+        }
+    }
+}
+.sports{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.comedy{
+
+    max-width: 1250px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 150px auto;
+}
+
+.comedysDetail{
+    margin-top: 100px;
+    padding: 50px;
+    width: 100%;
+    .comedys{
+        width: 100%;
+         background: #fff;
+         padding: 30px;
+         box-shadow: 5px 5px 20px rgba(0,0,0,.3);
+        .imgbox{
+            text-align: center;
+            width: 100%;
+            img{
+                width: 100% ;
+            }
+        }
+        .textBox{
+           
+
+            margin: 30px auto;
+            padding:20px 80px;
+           
+            .textBoxtTitle{
+                font-size: 24px;
+                font-weight: bold;
+                color: $color-khaki;
+            }
+            .textBoxtOriginal_title{
+                font-size: small;
+            }
+            .textBoxtOverview{
+               padding-top: 20px; 
+               padding-bottom: 30px;
+            }
+            .textBoxtRelease_date{}
+            .textBoxtVote_average{}
+            .textBoxtVote_count{}
+            .textBoxtPopularity{}
+            .textBoxtStatus{}
+            .textBoxtTagline{}
+            .textBoxtGenres{
+                .textBoxtGenre{ color: #f00; margin-right: 10px;
+                font-size: small;
+                font-weight: bold;   
+            }
             }
         }
     }
